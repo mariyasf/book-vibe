@@ -36,7 +36,7 @@ const BookCard = ({ book }) => {
                                 color="gray"
                                 className="font-bold text-sm text-green-500 bg-gray-200 rounded px-2 py-1"
                             >
-                                {tag}
+                                #{tag}
                             </Typography>
                         ))}
                     </div>

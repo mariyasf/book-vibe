@@ -3,7 +3,7 @@ import BookCard from "../BookCard/BookCard";
 
 const BookList = () => {
     const { data, loading } = useBookListData();
-    console.log(data);
+    console.log("Home Data: ", data);
 
     return (
         <div>

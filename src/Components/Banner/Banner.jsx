@@ -8,7 +8,7 @@ const Banner = () => {
                 <Button size="lg" className="bg-green-600">View The List</Button>
             </div>
             <div >
-                <img className="h-[400px] rounded-2xl" src="/public/images/banner.png" alt="" />
+                <img className="h-[400px] rounded-2xl" src="images/banner.png" alt="" />
             </div>
         </div>
     );

@@ -1,11 +1,12 @@
 import React from "react";
 import {
     Navbar,
-    MobileNav,
+    Collapse,
     Typography,
     Button,
     IconButton,
 } from "@material-tailwind/react";
+
 import { NavLink } from "react-router-dom";
 
 const NavBar = () => {
@@ -127,7 +128,7 @@ const NavBar = () => {
                 </div>
             </div>
 
-            <MobileNav open={openNav}>
+            <Collapse open={openNav}>
                 {navList}
                 <div className="flex items-center gap-x-1">
                     <Button fullWidth variant="text" size="sm" style={{ backgroundColor: "green", color: "white" }}>
@@ -137,7 +138,8 @@ const NavBar = () => {
                         <span>Sign in</span>
                     </Button>
                 </div>
-            </MobileNav>
+            </Collapse>
+
         </Navbar>
 
 
