@@ -8,11 +8,20 @@ import {
 import { useEffect, useState } from "react";
 import useBookListData from "../../Hooks/useBooksListData";
 import { useParams } from "react-router-dom";
+import { saveToLocalStorage } from "../../utils/localStorage";
+import { ToastContainer } from "react-toastify";
 
 const BookDetails = () => {
     const { data, loading } = useBookListData();
     const { bookId } = useParams();
     const [singleData, setSingleData] = useState({});
+
+    const handleReadButton = () => {
+        saveToLocalStorage(singleData, "BookList");
+    }
+    const handleWishListButton = () => {
+        saveToLocalStorage(singleData, "WishList");
+    }
 
     useEffect(() => {
         if (data) {
@@ -26,7 +35,8 @@ const BookDetails = () => {
     const { bookName, author, image, category, review, tags, rating, publisher, yearOfPublishing, totalPages } = singleData;
 
     return (
-        <div className="my-20 mx-20">
+        <div className="my-10 mx-20">
+            <ToastContainer />
             <Card className="p-4 w-full flex-col lg:flex-row">
                 <CardHeader
                     shadow={false}
@@ -45,11 +55,11 @@ const BookDetails = () => {
                         {bookName}
                     </Typography>
 
-                    <Typography variant="h4" color="blue-gray" className="pb-4 mb-2 border-b-2">
+                    <Typography variant="h5" color="blue-gray" className="pb-4 mb-2 border-b-2">
                         By: {author}
                     </Typography>
 
-                    <Typography variant="h4" color="blue-gray" className="pb-4 mb-2 border-b-2">
+                    <Typography variant="h5" color="blue-gray" className="pb-4 mb-2 border-b-2">
                         {category}
                     </Typography>
 
@@ -87,8 +97,8 @@ const BookDetails = () => {
 
                     <Typography className="flex gap-5 mt-4">
 
-                        <Button variant="outlined" color="blue">outlined</Button>
-                        <Button size="lg" className="bg-[#50B1C9]">large</Button>
+                        <Button onClick={handleReadButton} variant="outlined" color="blue">Read</Button>
+                        <Button onClick={handleWishListButton} size="lg" className="bg-[#50B1C9]">Wishlist</Button>
                     </Typography>
 
                 </CardBody>

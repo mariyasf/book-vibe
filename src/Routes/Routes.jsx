@@ -3,6 +3,7 @@ import Root from "../Layouts/Root";
 import Error from "../Pages/Error/Error";
 import Home from "../Pages/Home/Home";
 import BookDetails from "../Components/BookDetails/BookDetails";
+import ListedBooks from "../Pages/ListedBooks/ListedBooks";
 
 const route = createBrowserRouter([
     {
@@ -16,7 +17,7 @@ const route = createBrowserRouter([
             },
             {
                 path: "/listedBooks",
-                element: <div>listedBooks</div>
+                element: <ListedBooks />
             },
             {
                 path: "/pageToRead",

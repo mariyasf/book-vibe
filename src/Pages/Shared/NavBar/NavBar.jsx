@@ -27,7 +27,7 @@ const NavBar = () => {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <NavLink href="/" className="flex items-center">
+                <NavLink to="/" className="flex items-center">
                     Home
                 </NavLink>
             </Typography>
@@ -38,7 +38,7 @@ const NavBar = () => {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <NavLink href="/listedBooks" className="flex items-center">
+                <NavLink to="/listedBooks" className="flex items-center">
                     Listed Books
                 </NavLink>
             </Typography>
@@ -73,20 +73,18 @@ const NavBar = () => {
                     <div className="mr-4 hidden lg:block">{navList}</div>
                     <div className="flex items-center gap-x-1">
                         <Button
-                            style={{ backgroundColor: "green", color: "white" }}
                             variant="text"
                             size="sm"
-                            className="hidden lg:inline-block"
+                            className="hidden bg-green-500 text-white lg:inline-block"
                         >
                             <span>Log In</span>
                         </Button>
                         <Button
-                            style={{ backgroundColor: "blue", color: "white" }}
-                            variant="gradient"
+
                             size="sm"
-                            className="hidden lg:inline-block"
+                            className="bg-[#50B1C9] hidden lg:inline-block"
                         >
-                            <span>Sign in</span>
+                            Sign in
                         </Button>
                     </div>
                     <IconButton
