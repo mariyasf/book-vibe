@@ -1,7 +1,7 @@
 import { Button } from "@material-tailwind/react";
 import { useState } from "react";
 import ReadBooks from "../../Components/ReadBooks/ReadBooks";
-import WishlistCard from "../../Components/Wishlist/WishlistCard";
+import WishListContainer from "../../Components/WishListContainer/WishListContainer";
 
 const ListedBooks = () => {
     const [selectedList, setSelectedList] = useState('read');
@@ -12,7 +12,7 @@ const ListedBooks = () => {
 
     return (
         <div>
-            <div className="mt-5 mx-10 h-32 flex justify-center items-center bg-blue-gray-50 text-center font-bold text-2xl">
+            <div className="rounded-2xl mt-5 mx-10 h-32 flex justify-center items-center bg-blue-gray-50 text-center font-bold text-2xl">
                 <h1>Books</h1>
             </div>
 
@@ -43,7 +43,7 @@ const ListedBooks = () => {
                 }
                 {
                     selectedList === 'wishlist' &&
-                    <WishlistCard />
+                    <WishListContainer />
                 }
             </div>
         </div>

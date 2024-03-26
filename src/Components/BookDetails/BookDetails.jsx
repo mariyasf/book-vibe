@@ -17,7 +17,7 @@ const BookDetails = () => {
     const [singleData, setSingleData] = useState({});
 
     const handleReadButton = () => {
-        saveToLocalStorage(singleData, "BookList");
+        saveToLocalStorage(singleData, "ReadList");
     }
     const handleWishListButton = () => {
         saveToLocalStorage(singleData, "WishList");

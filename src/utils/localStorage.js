@@ -2,29 +2,23 @@ import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 export const saveToLocalStorage = (data, dataFormat) => {
-    let bookList = JSON.parse(localStorage.getItem("BookList")) || [];
+    let ReadList = JSON.parse(localStorage.getItem("ReadList")) || [];
     let wishList = JSON.parse(localStorage.getItem("WishList")) || [];
 
-    const existingBookInBookList = bookList.find(item => item.bookId === data.bookId);
+    const existingBookInReadList = ReadList.find(item => item.bookId === data.bookId);
     const existingBookInWishList = wishList.find(item => item.bookId === data.bookId);
 
-    if (dataFormat === "BookList") {
-        if (existingBookInWishList) {
-            toast.error("This book is already in the wishlist. You cannot mark it as read.");
-            return;
-        }
-    }
-    else if (dataFormat === "WishList") {
-        if (existingBookInBookList) {
+    if (dataFormat === "WishList") {
+        if (existingBookInReadList) {
             toast.error("This book has already been marked as read.");
             return;
         }
     }
 
-    if (dataFormat === "BookList") {
-        bookList.push(data);
-        if (!existingBookInBookList) {
-            localStorage.setItem("BookList", JSON.stringify(bookList));
+    if (dataFormat === "ReadList") {
+        ReadList.push(data);
+        if (!existingBookInReadList) {
+            localStorage.setItem("ReadList", JSON.stringify(ReadList));
             toast.success("Book has been marked as read successfully");
         }
         else {

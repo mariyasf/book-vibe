@@ -1,13 +1,12 @@
 import { useEffect, useState } from "react";
 import { getFromLocalStorage } from "../utils/localStorage";
 
-const useLocalStorage = () => {
+const useLocalStorage = ({ dataFormat }) => {
     const [localData, setLocalData] = useState([]);
 
     useEffect(() => {
-        setLocalData(getFromLocalStorage());
-    }, []);
-
+        setLocalData(getFromLocalStorage(dataFormat));
+    }, [dataFormat]);
 
     return { localData };
 };
