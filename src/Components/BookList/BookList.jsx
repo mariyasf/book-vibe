@@ -7,8 +7,7 @@ const BookList = () => {
 
     return (
         <div>
-            <h2>Books</h2>
-            <div className="grid grid-cols-2 lg:grid-cols-3 gap-5 mx-10">
+            <div className="mt-5 grid grid-cols-2 lg:grid-cols-3 gap-5 mx-10">
                 {
                     data.map(book =>
                         <BookCard key={book.bookId} book={book} />
