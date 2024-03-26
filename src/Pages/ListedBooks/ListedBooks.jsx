@@ -5,9 +5,13 @@ import WishListContainer from "../../Components/WishListContainer/WishListContai
 
 const ListedBooks = () => {
     const [selectedList, setSelectedList] = useState('read');
+    const [sortBy, setSortBy] = useState('');
 
     const toggleList = (listType) => {
         setSelectedList(listType);
+    };
+    const handleSortBy = (event) => {
+        setSortBy(event.target.value);
     };
 
     return (
@@ -17,7 +21,18 @@ const ListedBooks = () => {
             </div>
 
             <div className="flex justify-center mt-3">
-                <Button className="bg-green-600">Sort By</Button>
+                {/* <Button className="bg-green-600">Sort By</Button> */}
+
+
+                <select name="" id="" onChange={handleSortBy}
+                    className="p-4 rounded-2xl text-white bg-green-600">
+
+                    <option className="bg-white text-black" value="">Short By</option>
+                    <option className="bg-white text-black" value="rating">Rating</option>
+                    <option className="bg-white text-black" value="totalPages">Number of pages</option>
+                    <option className="bg-white text-black" value="yearOfPublishing">Publisher year</option>
+
+                </select>
             </div>
 
             <div className="flex justify-left mx-10 mt-20">
@@ -39,11 +54,11 @@ const ListedBooks = () => {
             <div className="mt-3 mx-10">
                 {
                     selectedList === 'read' &&
-                    <ReadBooks />
+                    <ReadBooks sortBy={sortBy} />
                 }
                 {
                     selectedList === 'wishlist' &&
-                    <WishListContainer />
+                    <WishListContainer sortBy={sortBy} />
                 }
             </div>
         </div>

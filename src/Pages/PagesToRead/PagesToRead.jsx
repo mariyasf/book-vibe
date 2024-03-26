@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Cell } from 'recharts';
 import useLocalStorage from '../../Hooks/useLocalStorage'; // Import your hook to fetch read data
 
@@ -17,24 +18,58 @@ const TriangleBar = (props) => {
 
 const ReadBarChart = () => {
     const { localData } = useLocalStorage({ dataFormat: "ReadList" }); // Fetch read data using your hook
-    console.log(localData);
+    const [chartWidth, setChartWidth] = useState(1200);
+    const [chartHeight, setChartHeight] = useState(500);
+
+    const handleChartSize = () => {
+        const width = window.innerWidth;
+        if (width >= 1024) {
+            setChartWidth(1200);
+            setChartHeight(500);
+        } else if (width >= 768) {
+            setChartWidth(800);
+            setChartHeight(400);
+        } else {
+            setChartWidth(600);
+            setChartHeight(300);
+        }
+    };
+
+    useEffect(() => {
+
+        handleChartSize();
+
+        window.addEventListener('resize', handleChartSize);
+        return () => window.removeEventListener('resize', handleChartSize);
+    }, []);
+
+    if (!localData || localData.length === 0) {
+        return (
+            <div className='w-full mx-auto flex justify-center items-center'>
+                <img className='h-[450px]' src="https://www.anychart.com/_core/img/features/anystock/no-data-label.svg" alt="" />
+            </div>
+
+
+        );
+    }
 
     return (
         <BarChart
             className='mx-auto mt-10'
-            width={1200}
-            height={500}
+            width={chartWidth}
+            height={chartHeight}
             data={localData}
-
         >
             <CartesianGrid strokeDasharray="3 3" />
             <XAxis dataKey="bookName" />
             <YAxis />
+            <Tooltip />
             <Bar
                 dataKey="totalPages"
                 fill="#8884d8"
                 shape={<TriangleBar />}
-                label={{ position: 'top' }}>
+                label={{ position: 'top' }}
+            >
                 {
                     localData.map((entry, index) => (
                         <Cell
