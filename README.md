@@ -1,5 +1,7 @@
 
 # Book Vibe
+## 🔗 Links
+[Live Link] (https://book-vibe.surge.sh)
 
 ### About Book Vibe:
 Book Vibe is a web application that allows users to explore and manage their book collection. With a user-friendly interface, users can easily view book details, mark books as read or add them to their wishlist, and visualize their reading progress with a custom shape bar chart. The application provides a seamless experience for book enthusiasts to organize and track their reading journey.
@@ -73,8 +75,6 @@ First install surge, if you haven’t already.
     npm run build.
 ```
 Deploy to surge by typing surge dist.
-## 🔗 Links
-[Live Link] (https://book-vibe.surge.sh)
 
 
 
