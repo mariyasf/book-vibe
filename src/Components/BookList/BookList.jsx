@@ -1,9 +1,15 @@
 import useBookListData from "../../Hooks/useBooksListData";
 import BookCard from "../BookCard/BookCard";
+import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 const BookList = () => {
     const { data, loading } = useBookListData();
-    console.log("Home Data: ", data);
+    // console.log("Home Data: ", data);
+    
+    if (loading) {
+        return <CustomSpinner />
+    }
+
 
     return (
         <div>

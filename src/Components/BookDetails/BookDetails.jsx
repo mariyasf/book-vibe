@@ -10,11 +10,14 @@ import useBookListData from "../../Hooks/useBooksListData";
 import { useParams } from "react-router-dom";
 import { saveToLocalStorage } from "../../utils/localStorage";
 import { ToastContainer } from "react-toastify";
+import CustomSpinner from "../CustomSpinner/CustomSpinner";
 
 const BookDetails = () => {
     const { data, loading } = useBookListData();
     const { bookId } = useParams();
     const [singleData, setSingleData] = useState({});
+
+
 
     const handleReadButton = () => {
         saveToLocalStorage(singleData, "ReadList");
@@ -30,7 +33,10 @@ const BookDetails = () => {
         }
     }, [data, bookId]);
 
-    console.log(bookId, singleData);
+    // console.log(bookId, singleData);
+    if (loading) {
+        return <CustomSpinner />
+    }
 
     const { bookName, author, image, category, review, tags, rating, publisher, yearOfPublishing, totalPages } = singleData;
 
