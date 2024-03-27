@@ -7,6 +7,7 @@ import ListedBooks from "../Pages/ListedBooks/ListedBooks";
 import PagesToRead from "../Pages/PagesToRead/PagesToRead";
 import SortByButton from "../Components/SortByButton/SortByButton";
 import FavList from "../Pages/FavList/FavList";
+import BookOrderList from "../Pages/BookOrderList/BookOrderList";
 
 const route = createBrowserRouter([
     {
@@ -40,6 +41,11 @@ const route = createBrowserRouter([
             {
                 path: "/favList",
                 element: <FavList />
+            }
+            ,
+            {
+                path: "/shopping",
+                element: <BookOrderList />
             }
 
         ]

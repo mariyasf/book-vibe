@@ -5,11 +5,20 @@ export const saveToLocalStorage = (data, dataFormat) => {
     let ReadList = JSON.parse(localStorage.getItem("ReadList")) || [];
     let wishList = JSON.parse(localStorage.getItem("WishList")) || [];
     let addToCard = JSON.parse(localStorage.getItem("AddToCard")) || [];
+    let OrderPlaced = JSON.parse(localStorage.getItem("OrderPlaced")) || [];
 
     const existingBookInReadList = ReadList.find(item => item.bookId === data.bookId);
     const existingBookInWishList = wishList.find(item => item.bookId === data.bookId);
     const existingBookInAddList = addToCard.find(item => item.bookId === data.bookId);
+    const existingBookInOrderPlacedList = OrderPlaced.find(item => item.bookId === data.bookId);
 
+
+    if (dataFormat === "OrderPlaced") {
+        if (existingBookInOrderPlacedList) {
+            toast.error("This book has already added to the card");
+            return;
+        }
+    }
 
     if (dataFormat === "AddToCard") {
         if (existingBookInAddList) {
@@ -17,6 +26,7 @@ export const saveToLocalStorage = (data, dataFormat) => {
             return;
         }
     }
+
     if (dataFormat === "WishList") {
         if (existingBookInReadList) {
             toast.error("This book has already been marked as read.");
@@ -54,6 +64,16 @@ export const saveToLocalStorage = (data, dataFormat) => {
         }
         else {
             toast.error("Book has been already added to the AddToCard");
+        }
+    }
+    else if (dataFormat === "OrderPlaced") {
+        OrderPlaced.push(data);
+        if (!existingBookInOrderPlacedList) {
+            localStorage.setItem("OrderPlaced", JSON.stringify(OrderPlaced));
+            toast.success("Order Confirm successfully");
+        }
+        else {
+            toast.error("Already orderd");
         }
     }
 }

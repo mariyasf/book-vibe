@@ -93,6 +93,25 @@ const NavBar = () => {
                 className="p-1 font-normal"
             >
 
+                <NavLink to="/shopping"
+                    className={({ isActive, isPending }) =>
+                        isActive
+                            ? "text-[#23BE0A] p-3 font-bold border-2 rounded-2xl border-green-500"
+                            : isPending
+                                ? <CustomSpinner />
+                                : "flex items-center"
+                    }>
+                    Order
+                </NavLink>
+            </Typography>
+
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+            >
+
                 <NavLink to="/favList"
                     className={({ isActive, isPending }) =>
                         isActive
