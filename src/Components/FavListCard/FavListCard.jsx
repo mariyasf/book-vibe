@@ -36,6 +36,7 @@ const FavListCard = ({ data }) => {
     };
 
 
+
     return (
         <Link to={`/bookDetails/${bookId}`}>
             <Card color="transparent" shadow={false} className="w-full p-4 max-w-[26rem] shadow-lg cursor-pointer">

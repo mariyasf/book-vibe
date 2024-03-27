@@ -9,8 +9,12 @@ import {
 import { MdFavorite } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import CustomSpinner from "../../../Components/CustomSpinner/CustomSpinner";
+import { getFromLocalStorage } from "../../../utils/localStorage";
 
 const NavBar = () => {
+    const AddToCard = getFromLocalStorage("AddToCard");
+
+
     const [openNav, setOpenNav] = React.useState(false);
 
     React.useEffect(() => {
@@ -92,17 +96,21 @@ const NavBar = () => {
                 <NavLink to="/favList"
                     className={({ isActive, isPending }) =>
                         isActive
-                            ? "text-[#23BE0A] p-3 text-xl"
+                            ? "flex gap-2 text-[#23BE0A] p-3 text-xl"
                             : isPending
                                 ? <CustomSpinner />
-                                : "flex items-center"
+                                : "flex items-center text-xl"
                     }>
-                    <MdFavorite /> <span>{ }</span>
+                    <MdFavorite />
+                    {
+                        AddToCard.length > 0 &&
+                        < span className="text-red-800 font-bold">{AddToCard.length}</span>
+                    }
                 </NavLink>
 
 
             </Typography>
-        </ul>
+        </ul >
     );
     return (
 
