@@ -1,6 +1,6 @@
 
 # Book Vibe
-## 🔗 Links
+
 [Live Link] (https://book-vibe.surge.sh)
 
 ### About Book Vibe:
@@ -28,10 +28,12 @@ Book Vibe is a web application that allows users to explore and manage their boo
 - Sort by dropdown for sorting listed books
 - Custom Shape Bar Chart on Pages to Read page
 - Ability to add books to favorite list and view the list
+- Users can now order books by entering their unique ID on the new "order" page.
 - Responsive design for desktop and mobile devices
 
 
 ### API Reference
+
 
 
 | Parameter  | Description                |
@@ -47,10 +49,9 @@ Book Vibe is a web application that allows users to explore and manage their boo
 | `tags`  | Array of tags describing the book's attributes |
 | `yearOfPublishing`  |  Year of publishing of the book |
 | `publisher`  | Publisher of the book |
-
-
-
-
+| `Price`  | Cost of a single unit |
+| `uniqueId`  | Serves as a distinct identifier |
+| `quantity`  | Represents the available stock level of a book |
 
 ### Installation
 
@@ -75,7 +76,3 @@ First install surge, if you haven’t already.
     npm run build.
 ```
 Deploy to surge by typing surge dist.
-
-
-
-
