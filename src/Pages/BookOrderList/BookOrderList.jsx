@@ -44,7 +44,6 @@ const BookOrderList = () => {
                     </h2>
 
                     <div className="p-10">
-
                         {
                             localData.map(book =>
                                 <ConfirmOrderCard

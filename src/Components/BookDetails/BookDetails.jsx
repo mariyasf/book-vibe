@@ -12,6 +12,7 @@ import { saveToLocalStorage } from "../../utils/localStorage";
 import { ToastContainer } from "react-toastify";
 import CustomSpinner from "../CustomSpinner/CustomSpinner";
 import { FaArrowRight } from "react-icons/fa6";
+import { MdFavorite, MdFavoriteBorder } from "react-icons/md";
 
 
 const BookDetails = () => {
@@ -46,7 +47,7 @@ const BookDetails = () => {
     const { bookName, author, image, category, review, tags, rating, publisher, yearOfPublishing, totalPages } = singleData;
 
     return (
-        <div className="my-10 mx-20">
+        <div className="my-10 mx-5 lg:mx-20">
             <ToastContainer />
             <Card className="p-4 w-full flex-col lg:flex-row">
                 <CardHeader
@@ -62,9 +63,18 @@ const BookDetails = () => {
                 </CardHeader>
 
                 <CardBody>
-                    <Typography variant="h3" className="mb-4 pb-4 uppercase text-black border-b-2">
-                        {bookName}
-                    </Typography>
+                    <div className="flex justify-between">
+
+                        <Typography variant="h3" className="mb-4 pb-4 uppercase text-black border-b-2">
+                            {bookName}
+                        </Typography>
+                        <MdFavoriteBorder
+                            onClick={handleAddToCardButton}
+                            className="text-[#23BE0A] border-2   border-blue-gray-700 rounded-lg text-3xl font-semibold cursor-pointer" />
+
+
+
+                    </div>
 
                     <Typography variant="h5" color="blue-gray" className="pb-4 mb-2 border-b-2">
                         By: {author}
@@ -106,15 +116,11 @@ const BookDetails = () => {
                         </ul>
                     </Typography>
 
-                    <Typography className="flex gap-5 mt-4">
+                    <Typography className="flex flex-col lg:flex-row gap-5 mt-4">
 
                         <Button onClick={handleReadButton} variant="outlined" color="blue">Read</Button>
                         <Button onClick={handleWishListButton} size="lg" className="bg-[#50B1C9]">Wishlist</Button>
-                        <Button onClick={handleAddToCardButton} size="lg" className="bg-[#50B1C9] flex justify-center">
-                            Add to Favourit List
-                            <FaArrowRight />
 
-                        </Button>
 
                     </Typography>
 
