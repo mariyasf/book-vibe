@@ -37,8 +37,9 @@ const ReadBookListCard = ({ readBook }) => {
                     <Typography variant="h6" color="blue-gray" className="mb-2">
                         By: {author}
                     </Typography>
+
                     {Array.isArray(tags) && tags.length > 0 && (
-                        <Typography className="mb-4 pb-4 flex gap-5">
+                        <Typography className="mb-4 pb-4 flex flex-col lg:flex-row gap-5">
                             <div className="flex space-x-2">
                                 <span className="text-black font-bold">Tags:</span>
 
@@ -46,30 +47,30 @@ const ReadBookListCard = ({ readBook }) => {
                                     <Typography
                                         key={index}
                                         color="gray"
-                                        className="font-bold text-sm text-green-500 bg-gray-200 rounded px-2 py-1"
+                                        className="font-bold text-sm text-[#23BE0A] bg-gray-200 rounded px-2 py-1"
                                     >
-                                        {tag}
+                                        #{tag}
                                     </Typography>
                                 ))}
                             </div>
-                            <div className="flex items-center justify-center text-center gap-2">
+                            <div className="flex  items-center text-center gap-2">
                                 <IoLocationSharp />
                                 Year of Publishing: {yearOfPublishing}
                             </div>
                         </Typography>
                     )}
-                    <Typography className="flex gap-5 border-b-2 pb-4">
-                        <div className="flex items-center justify-center text-center gap-2">
+                    <Typography className="flex flex-col lg:flex-row gap-5 border-b-2 pb-4">
+                        <div className="flex items-center text-center gap-2">
                             <MdGroup />
                             Publisher: {publisher}
                         </div>
-                        <div className="flex gap-2 items-center justify-center text-center ">
+                        <div className="flex gap-2 items-center text-center ">
                             <IoDocumentTextOutline />
                             Pages: {totalPages}
                         </div>
                     </Typography>
 
-                    <Typography className="flex mt-4 gap-5 border-b-2 pb-4">
+                    <Typography className="flex flex-col lg:flex-row mt-4 gap-5 border-b-2 pb-4">
                         <div className="bg-[#328EFF26] p-4 rounded-3xl text-[#328EFF]">
                             Category: {category}
                         </div>
@@ -77,7 +78,7 @@ const ReadBookListCard = ({ readBook }) => {
                             Rating:  {rating}
                         </div>
                         <Link to={`/bookDetails/${bookId}`}>
-                            <Button className="bg-green-500" >View Details</Button>
+                            <Button className="bg-[#23BE0A] w-full" >View Details</Button>
 
                         </Link>
                     </Typography>

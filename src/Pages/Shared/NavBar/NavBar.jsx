@@ -8,6 +8,7 @@ import {
 } from "@material-tailwind/react";
 
 import { NavLink } from "react-router-dom";
+import CustomSpinner from "../../../Components/CustomSpinner/CustomSpinner";
 
 const NavBar = () => {
     const [openNav, setOpenNav] = React.useState(false);
@@ -28,7 +29,16 @@ const NavBar = () => {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <NavLink to="/" className="flex items-center">
+                <NavLink to="/"
+                    className={({ isActive, isPending }) =>
+                        isActive
+                            ? "text-[#23BE0A] p-3 font-bold border-2 rounded-2xl border-green-500"
+                            : isPending
+                                ? <CustomSpinner />
+                                : "flex items-center"
+                    }
+                // className="flex items-center"
+                >
                     Home
                 </NavLink>
             </Typography>
@@ -39,7 +49,15 @@ const NavBar = () => {
                 color="blue-gray"
                 className="p-1 font-normal"
             >
-                <NavLink to="/listedBooks" className="flex items-center">
+                <NavLink to="/listedBooks"
+                    className={({ isActive, isPending }) =>
+                        isActive
+                            ? "text-[#23BE0A] p-2 font-bold border-2 rounded-2xl border-green-500"
+                            : isPending
+                                ? <CustomSpinner />
+                                : "flex items-center"
+                    }
+                >
                     Listed Books
                 </NavLink>
             </Typography>
@@ -52,7 +70,14 @@ const NavBar = () => {
                 className="p-1 font-normal"
             >
 
-                <NavLink to="/pageToRead" className="flex items-center">
+                <NavLink to="/pageToRead"
+                    className={({ isActive, isPending }) =>
+                        isActive
+                            ? "text-[#23BE0A] p-3 font-bold border-2 rounded-2xl border-green-500"
+                            : isPending
+                                ? <CustomSpinner />
+                                : "flex items-center"
+                    }>
                     Pages to Read
                 </NavLink>
             </Typography>
@@ -76,7 +101,7 @@ const NavBar = () => {
                         <Button
                             variant="text"
                             size="sm"
-                            className="hidden bg-green-500 text-white lg:inline-block"
+                            className="hidden bg-[#23BE0A] text-white lg:inline-block"
                         >
                             <span>Log In</span>
                         </Button>
@@ -131,7 +156,7 @@ const NavBar = () => {
             <Collapse open={openNav}>
                 {navList}
                 <div className="flex items-center gap-x-1">
-                    <Button fullWidth variant="text" size="sm" style={{ backgroundColor: "green", color: "white" }}>
+                    <Button fullWidth variant="text" size="sm" style={{ backgroundColor: "#23BE0A", color: "white" }}>
                         <span>Log In</span>
                     </Button>
                     <Button fullWidth variant="gradient" size="sm" className="bg-blue-400">

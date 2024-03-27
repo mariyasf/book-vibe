@@ -25,7 +25,7 @@ const ListedBooks = () => {
 
 
                 <select name="" id="" onChange={handleSortBy}
-                    className="p-4 rounded-2xl text-white bg-green-600">
+                    className="p-4 rounded-2xl text-white bg-[#23BE0A]">
 
                     <option className="bg-white text-black" value="">Short By</option>
                     <option className="bg-white text-black" value="rating">Rating</option>
@@ -51,7 +51,7 @@ const ListedBooks = () => {
                 </Button>
             </div>
 
-            <div className="mt-3 mx-10">
+            <div className="mx-10 border-t-2">
                 {
                     selectedList === 'read' &&
                     <ReadBooks sortBy={sortBy} />

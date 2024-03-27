@@ -83,7 +83,7 @@ const BookDetails = () => {
                                     <Typography
                                         key={index}
                                         color="gray"
-                                        className="font-bold text-sm text-green-500 bg-gray-200 rounded px-2 py-1"
+                                        className="font-bold text-sm text-[#23BE0A] bg-gray-200 rounded px-2 py-1"
                                     >
                                         {tag}
                                     </Typography>
