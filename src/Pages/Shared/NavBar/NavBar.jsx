@@ -6,7 +6,7 @@ import {
     Button,
     IconButton,
 } from "@material-tailwind/react";
-
+import { MdFavorite } from "react-icons/md";
 import { NavLink } from "react-router-dom";
 import CustomSpinner from "../../../Components/CustomSpinner/CustomSpinner";
 
@@ -81,6 +81,27 @@ const NavBar = () => {
                     Pages to Read
                 </NavLink>
             </Typography>
+
+            <Typography
+                as="li"
+                variant="small"
+                color="blue-gray"
+                className="p-1 font-normal"
+            >
+
+                <NavLink to="/favList"
+                    className={({ isActive, isPending }) =>
+                        isActive
+                            ? "text-[#23BE0A] p-3 text-xl"
+                            : isPending
+                                ? <CustomSpinner />
+                                : "flex items-center"
+                    }>
+                    <MdFavorite /> <span>{ }</span>
+                </NavLink>
+
+
+            </Typography>
         </ul>
     );
     return (
@@ -97,6 +118,7 @@ const NavBar = () => {
                 </Typography>
                 <div className="flex items-center gap-4">
                     <div className="mr-4 hidden lg:block">{navList}</div>
+
                     <div className="flex items-center gap-x-1">
                         <Button
                             variant="text"

@@ -11,6 +11,8 @@ import { useParams } from "react-router-dom";
 import { saveToLocalStorage } from "../../utils/localStorage";
 import { ToastContainer } from "react-toastify";
 import CustomSpinner from "../CustomSpinner/CustomSpinner";
+import { FaArrowRight } from "react-icons/fa6";
+
 
 const BookDetails = () => {
     const { data, loading } = useBookListData();
@@ -24,6 +26,9 @@ const BookDetails = () => {
     }
     const handleWishListButton = () => {
         saveToLocalStorage(singleData, "WishList");
+    }
+    const handleAddToCardButton = () => {
+        saveToLocalStorage(singleData, "AddToCard");
     }
 
     useEffect(() => {
@@ -105,6 +110,12 @@ const BookDetails = () => {
 
                         <Button onClick={handleReadButton} variant="outlined" color="blue">Read</Button>
                         <Button onClick={handleWishListButton} size="lg" className="bg-[#50B1C9]">Wishlist</Button>
+                        <Button onClick={handleAddToCardButton} size="lg" className="bg-[#50B1C9] flex justify-center">
+                            Add to Favourit List
+                            <FaArrowRight />
+
+                        </Button>
+
                     </Typography>
 
                 </CardBody>

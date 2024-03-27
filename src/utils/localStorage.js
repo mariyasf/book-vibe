@@ -4,10 +4,19 @@ import 'react-toastify/dist/ReactToastify.css';
 export const saveToLocalStorage = (data, dataFormat) => {
     let ReadList = JSON.parse(localStorage.getItem("ReadList")) || [];
     let wishList = JSON.parse(localStorage.getItem("WishList")) || [];
+    let addToCard = JSON.parse(localStorage.getItem("AddToCard")) || [];
 
     const existingBookInReadList = ReadList.find(item => item.bookId === data.bookId);
     const existingBookInWishList = wishList.find(item => item.bookId === data.bookId);
+    const existingBookInAddList = addToCard.find(item => item.bookId === data.bookId);
 
+
+    if (dataFormat === "AddToCard") {
+        if (existingBookInAddList) {
+            toast.error("This book has already added to the card");
+            return;
+        }
+    }
     if (dataFormat === "WishList") {
         if (existingBookInReadList) {
             toast.error("This book has already been marked as read.");
@@ -35,6 +44,16 @@ export const saveToLocalStorage = (data, dataFormat) => {
         }
         else {
             toast.error("Book has been already added to the wishlist");
+        }
+    }
+    else if (dataFormat === "AddToCard") {
+        addToCard.push(data);
+        if (!existingBookInAddList) {
+            localStorage.setItem("AddToCard", JSON.stringify(addToCard));
+            toast.success("Book has been added to the AddToCard successfully");
+        }
+        else {
+            toast.error("Book has been already added to the AddToCard");
         }
     }
 }
